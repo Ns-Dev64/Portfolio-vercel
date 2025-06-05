@@ -59,7 +59,7 @@ export function Hero() {
             }`}
           >
             Passionate about building scalable backend systems and high-performance applications. I specialize in
-            Node.js, Python, and modern web technologies, with experience in EdTech and marketplace solutions.
+            Node.js, Python, and modern web technologies, with experience in EdTech solutions.
           </p>
         </div>
 

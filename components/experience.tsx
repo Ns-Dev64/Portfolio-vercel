@@ -29,7 +29,7 @@ export function Experience() {
   const experiences = [
     {
       title: "Backend Developer Intern",
-      company: "DeepThought Edutech Ventures Private Limited",
+      company: "DeepThought",
       location: "Remote, India",
       duration: "Sep 2024 - Dec 2024",
       description:
