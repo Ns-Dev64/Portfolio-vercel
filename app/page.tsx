@@ -7,21 +7,25 @@ import { Skills } from "@/components/skills"
 import { Hobbies } from "@/components/hobbies"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
+import { BackgroundAnimation } from "@/components/background-animation"
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Hobbies />
-        <Contact />
-      </main>
-      <Footer />
+    <div className="min-h-screen bg-background relative">
+      <BackgroundAnimation />
+      <div className="relative z-10">
+        <Header />
+        <main>
+          <Hero />
+          <About />
+          <Experience />
+          <Projects />
+          <Skills />
+          <Hobbies />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </div>
   )
 }
