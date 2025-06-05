@@ -35,7 +35,7 @@ export function Header() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="#" className="text-xl font-bold hover:text-primary transition-colors duration-200">
+          <Link href="#" className="text-xl font-bold hover:text-foreground transition-colors duration-200">
             Navaneet Singh
           </Link>
 
@@ -45,10 +45,10 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium hover:text-primary transition-all duration-200 relative group"
+                className="text-sm font-medium hover:text-foreground transition-all duration-200 relative group"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-foreground transition-all duration-200 group-hover:w-full"></span>
               </Link>
             ))}
             <ThemeToggle />
@@ -76,7 +76,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block px-3 py-2 text-sm font-medium hover:text-primary hover:bg-primary/5 rounded-md transition-all duration-200"
+                  className="block px-3 py-2 text-sm font-medium hover:text-foreground hover:bg-foreground/5 rounded-md transition-all duration-200"
                   onClick={() => setIsMenuOpen(false)}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >

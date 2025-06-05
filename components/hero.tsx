@@ -16,14 +16,14 @@ export function Hero() {
     <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/3 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-foreground/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-foreground/3 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="max-w-4xl mx-auto text-center">
         <div className="mb-8">
           <div
-            className={`w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5 p-1 transition-all duration-1000 ${
+            className={`w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden bg-gradient-to-br from-foreground/20 to-foreground/5 p-1 transition-all duration-1000 ${
               isVisible ? "scale-100 opacity-100" : "scale-50 opacity-0"
             }`}
           >
@@ -42,10 +42,7 @@ export function Hero() {
               isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
-            Hi, I'm{" "}
-            <span className="text-primary bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent animate-pulse">
-              Navaneet
-            </span>
+            Hi, I'm <span className="bg-gradient-to-r bg-clip-text text-transparent animate-pulse">Navaneet</span>
           </h1>
 
           <p
@@ -71,17 +68,30 @@ export function Hero() {
             isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >
-          <Button size="lg" className="w-full sm:w-auto hover:scale-105 transition-transform duration-200 group">
-            <Mail className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-            Get In Touch
+          <Button
+            size="lg"
+            className="w-full sm:w-auto hover:scale-105 transition-transform duration-200 group bg-foreground text-background hover:bg-foreground/90"
+            asChild
+          >
+            <a href="mailto:yashsingh990765@gmail.com">
+              <Mail className="mr-2 h-4 w-4 group-hover:animate-bounce" />
+              Get In Touch
+            </a>
           </Button>
           <Button
             variant="outline"
             size="lg"
-            className="w-full sm:w-auto hover:scale-105 transition-transform duration-200 group"
+            className="w-full sm:w-auto hover:scale-105 transition-transform duration-200 group border-foreground text-foreground hover:bg-foreground hover:text-background"
+            asChild
           >
-            <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-            Download Resume
+            <a
+              href="https://drive.google.com/file/d/1znNersDEcHc_tEoYgP70LouuWcOOYZu-/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
+              Download Resume
+            </a>
           </Button>
         </div>
 
@@ -93,23 +103,32 @@ export function Hero() {
           <Button
             variant="ghost"
             size="icon"
-            className="hover:scale-110 hover:text-primary transition-all duration-200"
+            className="hover:scale-110 hover:text-foreground transition-all duration-200"
+            asChild
           >
-            <Github className="h-5 w-5" />
+            <a href="https://github.com/Ns-Dev64" target="_blank" rel="noopener noreferrer">
+              <Github className="h-5 w-5" />
+            </a>
           </Button>
           <Button
             variant="ghost"
             size="icon"
-            className="hover:scale-110 hover:text-primary transition-all duration-200"
+            className="hover:scale-110 hover:text-foreground transition-all duration-200"
+            asChild
           >
-            <Linkedin className="h-5 w-5" />
+            <a href="https://www.linkedin.com/in/navaneet-singh-7a7a5627b" target="_blank" rel="noopener noreferrer">
+              <Linkedin className="h-5 w-5" />
+            </a>
           </Button>
           <Button
             variant="ghost"
             size="icon"
-            className="hover:scale-110 hover:text-primary transition-all duration-200"
+            className="hover:scale-110 hover:text-foreground transition-all duration-200"
+            asChild
           >
-            <Mail className="h-5 w-5" />
+            <a href="mailto:yashsingh990765@gmail.com">
+              <Mail className="h-5 w-5" />
+            </a>
           </Button>
         </div>
       </div>
