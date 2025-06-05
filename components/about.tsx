@@ -65,7 +65,7 @@ export function About() {
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
                       <span>🎓</span>
-                      <span>BTech Computer Science Engineering Student</span>
+                      <span>BTech Computer Science Engineering Graduate</span>
                     </li>
                     <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
                       <span>💼</span>
@@ -77,7 +77,7 @@ export function About() {
                     </li>
                     <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
                       <span>🌱</span>
-                      <span>Love New Technologies</span>
+                      <span>Love Working With New Technologies</span>
                     </li>
                   </ul>
                 </div>
