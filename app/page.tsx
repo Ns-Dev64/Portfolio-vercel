@@ -8,24 +8,27 @@ import { Hobbies } from "@/components/hobbies"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { BackgroundAnimation } from "@/components/background-animation"
+import { SmoothScrollProvider } from "@/components/smooth-scroll-provider"
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen bg-background relative">
-      <BackgroundAnimation />
-      <div className="relative z-10">
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <Experience />
-          <Projects />
-          <Skills />
-          <Hobbies />
-          <Contact />
-        </main>
-        <Footer />
+    <SmoothScrollProvider>
+      <div className="min-h-screen bg-background relative">
+        <BackgroundAnimation />
+        <div className="relative z-10">
+          <Header />
+          <main>
+            <Hero />
+            <About />
+            <Experience />
+            <Projects />
+            <Skills />
+            <Hobbies />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </SmoothScrollProvider>
   )
 }

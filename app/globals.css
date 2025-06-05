@@ -58,6 +58,12 @@
     @apply bg-background text-foreground;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
+
+  /* Smooth scrolling for the entire page */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for fixed header */
+  }
 }
 
 /* Smooth transitions for theme switching */
@@ -148,6 +154,28 @@
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* Animation classes */
 .animate-float {
   animation: float 6s ease-in-out infinite;
@@ -161,6 +189,14 @@
   animation: rotate-slow 20s linear infinite;
 }
 
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.6s ease-out forwards;
+}
+
 /* Ensure background animations are behind content */
 canvas {
   position: fixed !important;
@@ -170,4 +206,21 @@ canvas {
   height: 100% !important;
   pointer-events: none !important;
   z-index: 0 !important;
+}
+
+/* Smooth scroll behavior for navigation */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Section fade-in animation */
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

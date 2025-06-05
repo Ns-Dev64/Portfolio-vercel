@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -27,6 +29,23 @@ export function Header() {
     { href: "#contact", label: "Contact" },
   ]
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    setIsMenuOpen(false)
+
+    const targetElement = document.querySelector(href)
+    if (targetElement) {
+      const headerHeight = 80
+      const elementPosition = targetElement.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      })
+    }
+  }
+
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
@@ -35,7 +54,11 @@ export function Header() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="#" className="text-xl font-bold hover:text-foreground transition-colors duration-200">
+          <Link
+            href="#"
+            className="text-xl font-bold hover:text-foreground transition-colors duration-200"
+            onClick={(e) => handleNavClick(e, "#")}
+          >
             Navaneet Singh
           </Link>
 
@@ -45,6 +68,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className="text-sm font-medium hover:text-foreground transition-all duration-200 relative group"
               >
                 {item.label}
@@ -76,8 +100,8 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className="block px-3 py-2 text-sm font-medium hover:text-foreground hover:bg-foreground/5 rounded-md transition-all duration-200"
-                  onClick={() => setIsMenuOpen(false)}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {item.label}
