@@ -65,7 +65,7 @@ export function About() {
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
                       <span>🎓</span>
-                      <span>BTech Computer Science Engineering Graduate</span>
+                      <span>BTech Computer Science Graduate</span>
                     </li>
                     <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
                       <span>💼</span>
@@ -73,11 +73,11 @@ export function About() {
                     </li>
                     <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
                       <span>🔧</span>
-                      <span>Performance Optimization Enthusiast</span>
+                      <span>Obsessed with scalable systems and clean architecture</span>
                     </li>
                     <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
                       <span>🌱</span>
-                      <span>Love Working With New Technologies</span>
+                      <span>Tech tinkerer at heart </span>
                     </li>
                   </ul>
                 </div>
