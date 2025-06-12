@@ -43,7 +43,7 @@ export function Skills() {
     },
     {
       title: "Databases",
-      skills: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "SQLite"],
+      skills: ["MongoDB", "Firebase", "PostgreSQL", "MySQL", "Redis", "SQLite"],
       icon: "🗄️",
     },
     {
