@@ -79,7 +79,7 @@ export function Hero() {
             asChild
           >
             <a
-              href="https://drive.google.com/file/d/10Q1NVLvZzHRZQlxFtnW8csQOKsxXfWvw/view?usp=sharing"
+              href="https://drive.google.com/file/d/1c53FIILxfqTmK54PZLDoFVtnYrCMTdTs/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
             >
