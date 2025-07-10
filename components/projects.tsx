@@ -68,6 +68,15 @@ export function Projects() {
       featured: false,
       isPrivate: false,
     },
+    {
+      title: "Deep Dosier",
+      description:
+        "Deep Dossier is a TypeScript-based note management app with bulk operations, real-time retrieval, and tag-based organization for structured technical content.",
+      technologies: ["TypeScript", "Claude Sonnet 4", "MCP-SDK(Model-Context-Protocol)", "Zod", "Prisma", "SQLite"],
+      github: "https://github.com/Ns-Dev64/Summarizer-MCP",
+      featured: false,
+      isPrivate: false,
+    },
   ]
 
   const featuredProjects = projects.filter((p) => p.featured)
