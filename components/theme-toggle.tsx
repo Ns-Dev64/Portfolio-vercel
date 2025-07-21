@@ -3,10 +3,12 @@
 import { Moon, Sun } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
+import { useToast } from "@/hooks/use-toast"
 
 export function ThemeToggle() {
   const [isDark, setIsDark] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const { toast } = useToast()
 
   useEffect(() => {
     setMounted(true)
@@ -30,9 +32,21 @@ export function ThemeToggle() {
     if (newTheme) {
       document.documentElement.classList.add("dark")
       localStorage.setItem("theme", "dark")
+      // Show encouraging message when switching to dark mode
+      toast({
+        title: "Welcome to the dark side! 😈",
+        description: "Much better for your eyes and looks way cooler!",
+        duration: 3000,
+      })
     } else {
       document.documentElement.classList.remove("dark")
       localStorage.setItem("theme", "light")
+      // Show playful message when switching to light mode
+      toast({
+        title: "Really? Light mode? 🤕",
+        description: "Dark mode is cooler, c'mon... but hey, your choice!",
+        duration: 4000,
+      })
     }
   }
 

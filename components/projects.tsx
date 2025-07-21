@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Github, Lock } from "lucide-react"
+import { Github, Lock, ExternalLink } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
 export function Projects() {
@@ -31,6 +31,29 @@ export function Projects() {
   }, [])
 
   const projects = [
+    {
+      title: "Real Estate Underwriter Ai",
+      description:
+        "Built an AI-powered real estate underwriter that parses T12s, Rent Rolls, and property data to deliver instant, model-backed investment decisions. Integrated Gemini 2.5 Pro with Attom APIs for precise metrics and risk analysis in seconds.",
+      technologies: [
+        "Node.js",
+        "Express.js",
+        "Next.js",
+        "ShadCn",
+        "Lucide",
+        "TypeScript",
+        "Gemini 2.5 pro",
+        "XLSX",
+        "Pdf-parser",
+        "MongoDB",
+        "Vercel",
+        "Render",
+      ],
+      github: "https://github.com/Ns-Dev64/real_estate_underwriter_server",
+      liveDemo: "https://real-estate-underwriter-client.vercel.app",
+      featured: true,
+      isPrivate: false,
+    },
     {
       title: "Marketplace Server",
       description:
@@ -122,6 +145,21 @@ export function Projects() {
                     <CardTitle className="flex items-center justify-between relative z-10">
                       <span className="group-hover:text-primary transition-colors duration-200">{project.title}</span>
                       <div className="flex space-x-2">
+                        {/* Live Demo Button */}
+                        {project.liveDemo && (
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            asChild
+                            className="hover:scale-110 transition-transform duration-200"
+                          >
+                            <a href={project.liveDemo} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="h-4 w-4" />
+                            </a>
+                          </Button>
+                        )}
+
+                        {/* GitHub Button */}
                         {project.isPrivate ? (
                           <Tooltip>
                             <TooltipTrigger asChild>
@@ -195,6 +233,21 @@ export function Projects() {
                     <CardTitle className="flex items-center justify-between text-lg">
                       <span className="group-hover:text-primary transition-colors duration-200">{project.title}</span>
                       <div className="flex space-x-2">
+                        {/* Live Demo Button */}
+                        {project.liveDemo && (
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            asChild
+                            className="hover:scale-110 transition-transform duration-200"
+                          >
+                            <a href={project.liveDemo} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="h-4 w-4" />
+                            </a>
+                          </Button>
+                        )}
+
+                        {/* GitHub Button */}
                         {project.isPrivate ? (
                           <Tooltip>
                             <TooltipTrigger asChild>
