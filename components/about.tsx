@@ -44,40 +44,44 @@ export function About() {
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold mb-4">My Journey</h3>
                 <p className="text-muted-foreground mb-4 leading-relaxed">
-                  I'm a Computer Science Engineering student and fullstack developer with a strong passion for backend
-                  development. My journey in tech has been focused on building robust, scalable applications and solving
-                  complex technical challenges. Through my internships at Techplement and DeepThought Edutech, I've
-                  gained hands-on experience in developing high-performance systems and EdTech solutions.
+                  I'm a fullstack developer with a strong passion for backend development. My journey began with
+                  learning the fundamentals of web development, but I quickly gravitated towards server-side
+                  architecture, API design, and database optimization.
                 </p>
                 <p className="text-muted-foreground mb-4 leading-relaxed">
-                  While I enjoy working across the full stack, I'm particularly drawn to backend architecture, API
-                  development, and performance optimization. I have experience with modern technologies like Bun.js,
-                  Node.js, and various databases, always focusing on creating efficient and maintainable solutions.
+                  While I'm comfortable with frontend technologies like React and Next.js, my true expertise lies in
+                  building robust backend systems. Through internships at Techplement and DeepThought, I've specialized
+                  in Node.js, Express.js, and performance optimization, achieving significant improvements in system
+                  efficiency and user experience.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  When I'm not coding, you'll find me exploring new technologies, gaming, working out or pursuing my
-                  hobbies that keep me creative and inspired.
+                  I love solving complex backend challenges, from designing scalable APIs to optimizing database queries
+                  and implementing efficient caching strategies.
                 </p>
               </div>
               <div className="space-y-4">
                 <div className="bg-gradient-to-br from-primary/5 to-primary/10 p-6 rounded-lg">
-                  <h4 className="font-semibold mb-4 text-primary">Quick Facts</h4>
+                  <h4 className="font-semibold mb-4 text-primary">Development Focus</h4>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
-                      <span>🎓</span>
-                      <span>BTech Computer Science Graduate</span>
+                      <span>🚀</span>
+                      <span>Backend Architecture & APIs</span>
                     </li>
                     <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
-                      <span>💼</span>
-                      <span>Fullstack Developer with Backend Focus</span>
+                      <span>⚡</span>
+                      <span>Performance Optimization</span>
                     </li>
                     <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
-                      <span>🔧</span>
-                      <span>Obsessed with scalable systems and clean architecture</span>
+                      <span>🗄️</span>
+                      <span>Database Design & Optimization</span>
                     </li>
                     <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
-                      <span>🌱</span>
-                      <span>Tech tinkerer at heart </span>
+                      <span>🎨</span>
+                      <span>Frontend Development (React/Next.js)</span>
+                    </li>
+                    <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
+                      <span>☁️</span>
+                      <span>Cloud Infrastructure & DevOps</span>
                     </li>
                   </ul>
                 </div>

@@ -75,24 +75,16 @@ export function Projects() {
       isPrivate: false,
     },
     {
-      title: "DT-Transcend (Ed-Tech SaaS)",
-      description:
-        "EdTech SaaS platform with APIs for core tools including Maturity Builder, Rigor Builder, and Insight Spotter. Handles 5000+ user posts monthly with optimized feed delivery and asset storage.",
-      technologies: ["Node.js", "Express.js", "MongoDB", "Postman", "Google APIs", "Google Sheets"],
-      featured: true,
-      isPrivate: true,
-    },
-    {
       title: "Platoon Plate (ALPR System)",
       description:
-        "Full-stack Automatic License Plate Recognition system using YOLOv8 for real-time detection. Built with MVC pattern and integrated AI model with web interface for processing and storing results.",
+        "Full-stack Automatic License Plate Recognition system designed for Indian Army checkposts using YOLOv8 for real-time detection. Built with MVC pattern and integrated AI model with web interface for processing and storing vehicle identification results at military installations.",
       technologies: ["Flask", "Python", "OpenCV", "JavaScript", "MySQL", "SQLAlchemy", "YOLOv8", "Ultralytics"],
       github: "https://github.com/chiku0989/flask_backend",
       featured: false,
       isPrivate: false,
     },
     {
-      title: "Deep Dosier",
+      title: "Deep Dossier",
       description:
         "Deep Dossier is a TypeScript-based note management app with bulk operations, real-time retrieval, and tag-based organization for structured technical content.",
       technologies: ["TypeScript", "Claude Sonnet 4", "MCP-SDK(Model-Context-Protocol)", "Zod", "Prisma", "SQLite"],

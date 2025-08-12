@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Mail, Download } from "lucide-react"
+import { Github, Linkedin, Download } from "lucide-react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 
@@ -67,15 +67,12 @@ export function Hero() {
             className="w-full sm:w-auto hover:scale-105 transition-transform duration-200 group bg-foreground text-background hover:bg-foreground/90"
             asChild
           >
-            <a href="mailto:yashsingh990765@gmail.com">
-              <Mail className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-              Get In Touch
-            </a>
+            <a href="mailto:yashsingh990765@gmail.com">Get In Touch</a>
           </Button>
           <Button
             variant="outline"
             size="lg"
-            className="w-full sm:w-auto hover:scale-105 transition-transform duration-200 group border-foreground text-foreground hover:bg-foreground hover:text-background"
+            className="w-full sm:w-auto hover:scale-105 transition-transform duration-200 group border-foreground text-foreground hover:bg-foreground hover:text-background bg-transparent"
             asChild
           >
             <a
@@ -112,16 +109,6 @@ export function Hero() {
           >
             <a href="https://www.linkedin.com/in/navaneet-singh-7a7a5627b" target="_blank" rel="noopener noreferrer">
               <Linkedin className="h-5 w-5" />
-            </a>
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="hover:scale-110 hover:text-foreground transition-all duration-200"
-            asChild
-          >
-            <a href="mailto:yashsingh990765@gmail.com">
-              <Mail className="h-5 w-5" />
             </a>
           </Button>
         </div>
