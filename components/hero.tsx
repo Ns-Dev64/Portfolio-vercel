@@ -53,7 +53,7 @@ export function Hero() {
             </Button>
             <Button variant="outline" size="lg" className="btn-secondary bg-transparent" asChild>
               <a
-                href="https://drive.google.com/file/d/1DLYdFXPrnNAzscQlz3YBjeMfTi-uUv62/view?usp=sharing"
+                href="https://drive.google.com/file/d/1d0kLLG7Pt_hCNkHuyotOUvciAZar43X6/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
               >

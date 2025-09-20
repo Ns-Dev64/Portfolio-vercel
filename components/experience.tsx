@@ -33,7 +33,7 @@ export function Experience() {
       duration: "Aug 2025 - Ongoing",
       description:
         "Developed backend features for a B2B SaaS productivity platform using Express, TypeScript, Sequelize, and PostgreSQL, improving system stability and reducing feature delivery time by 30%. Built comprehensive testing framework using Jest (ts-jest), expanding automated test coverage to 60%.",
-      technologies: ["Express.js", "TypeScript", "Sequelize", "PostgreSQL", "Jest", "OAuth", "React", "Flutter"],
+      technologies: ["Express.js", "TypeScript", "Sequelize", "PostgreSQL", "Jest", "OAuth"],
     },
     {
       title: "Backend Developer Intern",

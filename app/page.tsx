@@ -3,7 +3,6 @@ import { Hero } from "@/components/hero"
 import { Experience } from "@/components/experience"
 import { Projects } from "@/components/projects"
 import { Skills } from "@/components/skills"
-import { Hobbies } from "@/components/hobbies"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { BackgroundAnimation } from "@/components/background-animation"
@@ -21,7 +20,6 @@ export default function Portfolio() {
             <Experience />
             <Projects />
             <Skills />
-            <Hobbies />
             <Contact />
           </main>
           <Footer />
