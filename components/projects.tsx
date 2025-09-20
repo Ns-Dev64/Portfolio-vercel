@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Github, Lock, ExternalLink } from "lucide-react"
@@ -32,22 +31,20 @@ export function Projects() {
 
   const projects = [
     {
-      title: "Real Estate Underwriter Ai",
+      title: "Real Estate Underwriter AI",
       description:
-        "Built an AI-powered real estate underwriter that parses T12s, Rent Rolls, and property data to deliver instant, model-backed investment decisions. Integrated Gemini 2.5 Pro with Attom APIs for precise metrics and risk analysis in seconds.",
+        "Architected an AI-powered underwriting flow that ingests T12s, Rent Rolls, property data, and investor criteria, then delivers investment decisions with detailed metrics and reasoning, cutting underwriting time from hours to seconds.",
       technologies: [
         "Node.js",
         "Express.js",
+        "TypeScript",
+        "Gemini 2.5 Pro",
+        "XLSX",
+        "Pdf-Parser",
         "Next.js",
         "ShadCn",
         "Lucide",
-        "TypeScript",
-        "Gemini 2.5 pro",
-        "XLSX",
-        "Pdf-parser",
-        "MongoDB",
-        "Vercel",
-        "Render",
+        "Attom APIs",
       ],
       github: "https://github.com/Ns-Dev64/real_estate_underwriter_server",
       liveDemo: "https://real-estate-underwriter-client.vercel.app",
@@ -55,9 +52,32 @@ export function Projects() {
       isPrivate: false,
     },
     {
+      title: "Notemind LLM",
+      description:
+        "Designed and implemented an advanced RAG pipeline for multimodal knowledge management, enabling users to upload and query across PDFs, documents, CSVs, videos, and audios with outputs like summaries, podcasts, mindmaps, and flowcharts.",
+      technologies: [
+        "Next.js",
+        "Bun.js",
+        "Elysia.js",
+        "Express.js",
+        "LangChain",
+        "TypeScript",
+        "MongoDB",
+        "PineconeDB",
+        "HuggingFace",
+        "ffmpeg",
+        "Mermaid.js",
+        "Gemini 2.5 Flash",
+      ],
+      github: "https://github.com/Ns-Dev64/Notebook_RAG",
+      liveDemo: "https://notebook-rag-three.vercel.app/",
+      featured: true,
+      isPrivate: false,
+    },
+    {
       title: "Marketplace Server",
       description:
-        "High-performance marketplace backend using Bun.js with custom clustering architecture. Achieved 40% better performance than traditional Node.js implementations with fault tolerance and full CPU core utilization.",
+        "Built a high-performance Bun backend with custom clustering, cutting memory use by 40% and maximizing CPU efficiency. Integrated Redis and BullMQ for fault-tolerant background processing, improving job throughput by 35%.",
       technologies: [
         "Bun.js",
         "Hono.js",
@@ -77,7 +97,7 @@ export function Projects() {
     {
       title: "Platoon Plate (ALPR System)",
       description:
-        "Full-stack Automatic License Plate Recognition system designed for Indian Army checkposts using YOLOv8 for real-time detection. Built with MVC pattern and integrated AI model with web interface for processing and storing vehicle identification results at military installations.",
+        "Full-stack Automatic License Plate Recognition system designed for Indian Army checkposts using YOLOv8 for real-time detection. Built with MVC pattern and integrated AI model with web interface.",
       technologies: ["Flask", "Python", "OpenCV", "JavaScript", "MySQL", "SQLAlchemy", "YOLOv8", "Ultralytics"],
       github: "https://github.com/chiku0989/flask_backend",
       featured: false,
@@ -86,8 +106,8 @@ export function Projects() {
     {
       title: "Deep Dossier",
       description:
-        "Deep Dossier is a TypeScript-based note management app with bulk operations, real-time retrieval, and tag-based organization for structured technical content.",
-      technologies: ["TypeScript", "Claude Sonnet 4", "MCP-SDK(Model-Context-Protocol)", "Zod", "Prisma", "SQLite"],
+        "TypeScript-based note management app with bulk operations, real-time retrieval, and tag-based organization for structured technical content.",
+      technologies: ["TypeScript", "Claude Sonnet 4", "MCP-SDK", "Zod", "Prisma", "SQLite"],
       github: "https://github.com/Ns-Dev64/Summarizer-MCP",
       featured: false,
       isPrivate: false,
@@ -99,82 +119,70 @@ export function Projects() {
 
   const handlePrivateRepoClick = (e: React.MouseEvent) => {
     e.preventDefault()
-    // The tooltip will handle showing the message
   }
 
   return (
-    <section ref={ref} id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section ref={ref} id="projects" className="section-padding bg-muted/30">
       <div className="max-w-6xl mx-auto">
-        <h2
-          className={`text-3xl font-bold text-center mb-12 transition-all duration-1000 ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-          }`}
-        >
-          Projects
-        </h2>
+        <div className="text-center mb-12">
+          <h2
+            className={`text-responsive-lg font-bold mb-4 transition-all duration-700 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
+          >
+            Projects
+          </h2>
+          <div className="divider" />
+        </div>
 
         <TooltipProvider>
           {/* Featured Projects */}
-          <div className="mb-12">
+          <div className="mb-16">
             <h3
-              className={`text-2xl font-semibold mb-6 transition-all duration-1000 delay-200 ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              className={`text-xl font-semibold mb-8 transition-all duration-700 delay-200 ${
+                isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
             >
               Featured Projects
             </h3>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredProjects.map((project, index) => (
                 <Card
                   key={index}
-                  className={`h-full hover:shadow-xl transition-all duration-500 hover:scale-[1.03] group border-l-4 border-l-primary/20 hover:border-l-primary ${
-                    isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                  className={`card-minimal hover-scale h-full transition-all duration-700 ${
+                    isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                   }`}
-                  style={{ transitionDelay: `${(index + 1) * 300}ms` }}
+                  style={{ transitionDelay: `${(index + 1) * 200}ms` }}
                 >
-                  <CardHeader className="relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <CardTitle className="flex items-center justify-between relative z-10">
-                      <span className="group-hover:text-primary transition-colors duration-200">{project.title}</span>
+                  <CardHeader>
+                    <CardTitle className="flex items-center justify-between text-lg">
+                      <span>{project.title}</span>
                       <div className="flex space-x-2">
-                        {/* Live Demo Button */}
                         {project.liveDemo && (
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            asChild
-                            className="hover:scale-110 transition-transform duration-200"
-                          >
+                          <Button variant="ghost" size="icon" className="h-8 w-8" asChild>
                             <a href={project.liveDemo} target="_blank" rel="noopener noreferrer">
                               <ExternalLink className="h-4 w-4" />
                             </a>
                           </Button>
                         )}
-
-                        {/* GitHub Button */}
                         {project.isPrivate ? (
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <Button
                                 variant="ghost"
                                 size="icon"
+                                className="h-8 w-8 cursor-not-allowed opacity-60"
                                 onClick={handlePrivateRepoClick}
-                                className="hover:scale-110 transition-transform duration-200 cursor-not-allowed opacity-60"
                               >
                                 <Lock className="h-4 w-4" />
                               </Button>
                             </TooltipTrigger>
                             <TooltipContent>
-                              <p className="text-sm">Violates company guidelines.</p>
+                              <p className="text-sm">Private repository</p>
                             </TooltipContent>
                           </Tooltip>
                         ) : (
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            asChild
-                            className="hover:scale-110 transition-transform duration-200"
-                          >
+                          <Button variant="ghost" size="icon" className="h-8 w-8" asChild>
                             <a href={project.github} target="_blank" rel="noopener noreferrer">
                               <Github className="h-4 w-4" />
                             </a>
@@ -183,18 +191,13 @@ export function Projects() {
                       </div>
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="relative z-10">
-                    <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <Badge
-                          key={tech}
-                          variant="outline"
-                          className="hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-200 hover:scale-105"
-                          style={{ animationDelay: `${techIndex * 50}ms` }}
-                        >
+                  <CardContent className="space-y-4">
+                    <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
+                    <div className="flex flex-wrap gap-1">
+                      {project.technologies.map((tech) => (
+                        <span key={tech} className="badge-minimal text-xs">
                           {tech}
-                        </Badge>
+                        </span>
                       ))}
                     </div>
                   </CardContent>
@@ -206,8 +209,8 @@ export function Projects() {
           {/* Other Projects */}
           <div>
             <h3
-              className={`text-2xl font-semibold mb-6 transition-all duration-1000 delay-500 ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              className={`text-xl font-semibold mb-8 transition-all duration-700 delay-500 ${
+                isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
             >
               Other Projects
@@ -216,73 +219,37 @@ export function Projects() {
               {otherProjects.map((project, index) => (
                 <Card
                   key={index}
-                  className={`hover:shadow-lg transition-all duration-500 hover:scale-[1.02] group ${
-                    isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                  className={`card-minimal hover-scale transition-all duration-700 ${
+                    isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                   }`}
-                  style={{ transitionDelay: `${(index + 3) * 300}ms` }}
+                  style={{ transitionDelay: `${(index + 4) * 200}ms` }}
                 >
                   <CardHeader>
                     <CardTitle className="flex items-center justify-between text-lg">
-                      <span className="group-hover:text-primary transition-colors duration-200">{project.title}</span>
+                      <span>{project.title}</span>
                       <div className="flex space-x-2">
-                        {/* Live Demo Button */}
                         {project.liveDemo && (
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            asChild
-                            className="hover:scale-110 transition-transform duration-200"
-                          >
+                          <Button variant="ghost" size="icon" className="h-8 w-8" asChild>
                             <a href={project.liveDemo} target="_blank" rel="noopener noreferrer">
                               <ExternalLink className="h-4 w-4" />
                             </a>
                           </Button>
                         )}
-
-                        {/* GitHub Button */}
-                        {project.isPrivate ? (
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={handlePrivateRepoClick}
-                                className="hover:scale-110 transition-transform duration-200 cursor-not-allowed opacity-60"
-                              >
-                                <Lock className="h-4 w-4" />
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p className="text-sm">Can't expose company code</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        ) : (
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            asChild
-                            className="hover:scale-110 transition-transform duration-200"
-                          >
-                            <a href={project.github} target="_blank" rel="noopener noreferrer">
-                              <Github className="h-4 w-4" />
-                            </a>
-                          </Button>
-                        )}
+                        <Button variant="ghost" size="icon" className="h-8 w-8" asChild>
+                          <a href={project.github} target="_blank" rel="noopener noreferrer">
+                            <Github className="h-4 w-4" />
+                          </a>
+                        </Button>
                       </div>
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground text-sm mb-3 leading-relaxed">{project.description}</p>
+                  <CardContent className="space-y-4">
+                    <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
                     <div className="flex flex-wrap gap-1">
-                      {project.technologies.map((tech, techIndex) => (
-                        <Badge
-                          key={tech}
-                          variant="secondary"
-                          className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
-                          style={{ animationDelay: `${techIndex * 50}ms` }}
-                        >
+                      {project.technologies.map((tech) => (
+                        <span key={tech} className="badge-minimal text-xs">
                           {tech}
-                        </Badge>
+                        </span>
                       ))}
                     </div>
                   </CardContent>

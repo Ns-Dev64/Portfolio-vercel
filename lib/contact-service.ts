@@ -1,6 +1,7 @@
 "use client"
 
-import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit } from "firebase/firestore"
+import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit, updateDoc, doc } from "firebase/firestore"
+import { db } from "./firebase"
 
 export interface ContactFormData {
   name: string
@@ -18,11 +19,17 @@ export interface ContactSubmission extends ContactFormData {
   userAgent?: string
 }
 
+export interface ContactFormResult {
+  success: boolean
+  error?: {
+    code: string
+    message: string
+  }
+}
+
 // Test Firestore connection by attempting to write to contacts collection
 export const testFirestoreConnection = async (): Promise<boolean> => {
   try {
-    const { db } = await import("./firebase")
-
     if (!db) {
       return false
     }
@@ -52,96 +59,82 @@ export const testFirestoreConnection = async (): Promise<boolean> => {
 
 // Alternative connection test that doesn't require any permissions
 export const testFirebaseConnection = async (): Promise<boolean> => {
-  try {
-    const { db } = await import("./firebase")
-
-    if (!db) {
-      return false
-    }
-
-    // Just check if the db object exists and has the expected properties
-    if (db && typeof db === "object" && "app" in db) {
-      return true
-    }
-
+  // Check if Firebase is properly initialized
+  if (!db) {
     return false
+  }
+
+  try {
+    // Try to get a reference to the contacts collection
+    const contactsRef = collection(db, "contacts")
+    return true
   } catch (error) {
+    console.error("Firebase connection test failed:", error)
     return false
   }
 }
 
 // Submit contact form to Firebase with retry logic
-export const submitContactForm = async (
-  formData: ContactFormData,
-): Promise<{ success: boolean; id?: string; error?: any }> => {
-  let retryCount = 0
-  const maxRetries = 3
-
-  while (retryCount < maxRetries) {
-    try {
-      // Dynamic import to ensure we're on the client side
-      const { db } = await import("./firebase")
-
-      if (!db) {
-        throw new Error("Firebase not initialized")
-      }
-
-      // Add additional metadata
-      const submissionData: Omit<ContactSubmission, "id"> = {
-        ...formData,
-        timestamp: serverTimestamp(),
-        status: "unread",
-        source: "portfolio-website",
-        userAgent: typeof window !== "undefined" ? window.navigator.userAgent : "unknown",
-      }
-
-      const docRef = await addDoc(collection(db, "contacts"), submissionData)
-      return { success: true, id: docRef.id }
-    } catch (error: any) {
-      // Provide specific error messages
-      if (error?.code === "permission-denied") {
-        return {
-          success: false,
-          error: {
-            message: "Permission denied. Please check Firestore security rules.",
-            code: error.code,
-          },
-        }
-      } else if (error?.code === "unavailable") {
-        retryCount++
-        if (retryCount < maxRetries) {
-          // Wait before retrying
-          await new Promise((resolve) => setTimeout(resolve, 1000 * retryCount))
-          continue
-        }
-      } else if (error?.message?.includes("network")) {
-        retryCount++
-        if (retryCount < maxRetries) {
-          await new Promise((resolve) => setTimeout(resolve, 2000))
-          continue
-        }
-      }
-
-      // If we've exhausted retries or it's a different error
-      return { success: false, error }
+export const submitContactForm = async (formData: ContactFormData): Promise<ContactFormResult> => {
+  // Check if Firebase is properly initialized
+  if (!db) {
+    return {
+      success: false,
+      error: {
+        code: "firebase-not-initialized",
+        message: "Firebase is not properly configured. Please check your environment variables.",
+      },
     }
   }
 
-  return {
-    success: false,
-    error: {
-      message: "Failed to submit after multiple attempts. Please try again later.",
-      code: "max-retries-exceeded",
-    },
+  try {
+    // Add the contact form data to Firestore
+    const docRef = await addDoc(collection(db, "contacts"), {
+      ...formData,
+      timestamp: serverTimestamp(),
+      status: "new",
+    })
+
+    return {
+      success: true,
+    }
+  } catch (error: any) {
+    console.error("Error submitting contact form:", error)
+
+    // Handle specific Firebase errors
+    let errorCode = "unknown-error"
+    let errorMessage = "An unexpected error occurred. Please try again."
+
+    if (error?.code) {
+      errorCode = error.code
+      switch (error.code) {
+        case "permission-denied":
+          errorMessage = "Permission denied. Please check Firestore security rules."
+          break
+        case "unavailable":
+          errorMessage = "Service temporarily unavailable. Please try again later."
+          break
+        case "network-request-failed":
+          errorMessage = "Network error. Please check your internet connection."
+          break
+        default:
+          errorMessage = error.message || errorMessage
+      }
+    }
+
+    return {
+      success: false,
+      error: {
+        code: errorCode,
+        message: errorMessage,
+      },
+    }
   }
 }
 
 // Get all contact submissions (for admin use)
 export const getContactSubmissions = async (limitCount = 50): Promise<ContactSubmission[]> => {
   try {
-    // Dynamic import to ensure we're on the client side
-    const { db } = await import("./firebase")
-
     if (!db) {
       throw new Error("Firebase not initialized")
     }
@@ -167,9 +160,6 @@ export const getContactSubmissions = async (limitCount = 50): Promise<ContactSub
 // Mark a submission as read
 export const markAsRead = async (submissionId: string): Promise<boolean> => {
   try {
-    const { db } = await import("./firebase")
-    const { updateDoc, doc } = await import("firebase/firestore")
-
     if (!db) {
       throw new Error("Firebase not initialized")
     }

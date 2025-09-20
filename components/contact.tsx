@@ -90,14 +90,18 @@ export function Contact() {
         setSubmitStatus("error")
 
         // Provide user-friendly error messages
-        if (result.error?.code === "permission-denied") {
+        if (result.error?.code === "firebase-not-initialized") {
+          setErrorMessage(
+            "Contact form is not available at the moment. Please reach out directly via email: yashsingh990765@gmail.com",
+          )
+        } else if (result.error?.code === "permission-denied") {
           setErrorMessage(
             "Permission denied. Please check that Firestore security rules allow contact form submissions.",
           )
         } else if (result.error?.code === "unavailable") {
           setErrorMessage("Service temporarily unavailable. Please try again in a moment.")
-        } else if (result.error?.code === "max-retries-exceeded") {
-          setErrorMessage("Connection issues detected. Please try again later or contact me directly via email.")
+        } else if (result.error?.code === "network-request-failed") {
+          setErrorMessage("Network error. Please check your internet connection and try again.")
         } else {
           setErrorMessage(result.error?.message || "Failed to send message. Please try again.")
         }
@@ -176,7 +180,7 @@ export function Contact() {
               <Button
                 variant="outline"
                 size="lg"
-                className="flex-1 hover:scale-105 hover:rotate-1 transition-all duration-300 group"
+                className="flex-1 hover:scale-105 hover:rotate-1 transition-all duration-300 group bg-transparent"
                 asChild
               >
                 <a href="https://github.com/Ns-Dev64" target="_blank" rel="noopener noreferrer">
@@ -187,7 +191,7 @@ export function Contact() {
               <Button
                 variant="outline"
                 size="lg"
-                className="flex-1 hover:scale-105 hover:rotate-1 transition-all duration-300 group"
+                className="flex-1 hover:scale-105 hover:rotate-1 transition-all duration-300 group bg-transparent"
                 asChild
               >
                 <a
@@ -224,7 +228,7 @@ export function Contact() {
                     ) : (
                       <>
                         <WifiOff className="h-3 w-3 text-yellow-500" />
-                        <span className="text-yellow-500">Checking...</span>
+                        <span className="text-yellow-500">Offline</span>
                       </>
                     )}
                   </div>
@@ -343,15 +347,6 @@ export function Contact() {
                     </>
                   )}
                 </Button>
-
-                {connectionStatus === "disconnected" && (
-                  <div className="text-center">
-                    <Button type="button" variant="outline" size="sm" onClick={testConnection} className="text-xs">
-                      <Database className="mr-1 h-3 w-3" />
-                      Test Connection
-                    </Button>
-                  </div>
-                )}
               </form>
 
               <div className="mt-6 p-4 bg-muted/50 rounded-lg">

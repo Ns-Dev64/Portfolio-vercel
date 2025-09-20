@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -54,26 +56,34 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
-  /* Smooth scrolling for the entire page */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.025em;
+  }
+
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Account for fixed header */
+    scroll-padding-top: 80px;
   }
 }
 
-/* Smooth transitions for theme switching */
-* {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Custom scrollbar for better dark mode */
+/* Clean scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -88,76 +98,25 @@
   @apply bg-muted-foreground/50;
 }
 
-/* Remove any blue accents and keep it monochrome */
-.text-primary {
-  @apply text-foreground;
+/* Smooth transitions */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, transform 0.2s
+    ease;
 }
 
-.bg-primary {
-  @apply bg-foreground;
+/* Focus styles */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  @apply outline-2 outline-offset-2 outline-foreground ring-2 ring-foreground/20;
 }
 
-.border-primary {
-  @apply border-foreground;
-}
-
-.hover\:text-primary:hover {
-  @apply hover:text-foreground;
-}
-
-.hover\:bg-primary:hover {
-  @apply hover:bg-foreground;
-}
-
-.hover\:border-primary:hover {
-  @apply hover:border-foreground;
-}
-
-/* Ensure gradient text uses black/white */
-.bg-gradient-to-r {
-  background: linear-gradient(to right, hsl(var(--foreground)), hsl(var(--muted-foreground)));
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
-/* Animation keyframes */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes pulse-subtle {
-  0% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.7;
-  }
-  100% {
-    opacity: 0.4;
-  }
-}
-
-@keyframes rotate-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
+/* Subtle animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -165,62 +124,118 @@
   }
 }
 
-@keyframes slideInFromLeft {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateX(-50px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
   }
 }
 
-/* Animation classes */
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-pulse-subtle {
-  animation: pulse-subtle 4s ease-in-out infinite;
-}
-
-.animate-rotate-slow {
-  animation: rotate-slow 20s linear infinite;
-}
-
 .animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.animate-slide-in-left {
-  animation: slideInFromLeft 0.6s ease-out forwards;
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
 }
 
-/* Ensure background animations are behind content */
-canvas {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  pointer-events: none !important;
-  z-index: 0 !important;
+/* Clean card styles */
+.card-minimal {
+  @apply bg-card border border-border/50 rounded-lg transition-all duration-200;
 }
 
-/* Smooth scroll behavior for navigation */
-.smooth-scroll {
-  scroll-behavior: smooth;
+.card-minimal:hover {
+  @apply border-border shadow-sm;
 }
 
-/* Section fade-in animation */
-.section-fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+/* Clean button styles */
+.btn-minimal {
+  @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+  @apply disabled:pointer-events-none disabled:opacity-50;
 }
 
-.section-fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
+.btn-primary {
+  @apply bg-foreground text-background hover:bg-foreground/90;
+}
+
+.btn-secondary {
+  @apply border border-border bg-background hover:bg-muted;
+}
+
+/* Typography improvements */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Minimal section spacing */
+.section-padding {
+  @apply py-16 px-4 sm:px-6 lg:px-8;
+}
+
+/* Clean grid layouts */
+.grid-minimal {
+  @apply grid gap-6;
+}
+
+/* Subtle hover effects */
+.hover-lift {
+  @apply transition-transform duration-200 hover:-translate-y-1;
+}
+
+.hover-scale {
+  @apply transition-transform duration-200 hover:scale-[1.02];
+}
+
+/* Clean badge styles */
+.badge-minimal {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  @apply bg-muted text-muted-foreground border border-border/50;
+}
+
+.badge-minimal:hover {
+  @apply bg-foreground text-background;
+}
+
+/* Minimal dividers */
+.divider {
+  @apply w-12 h-px bg-border mx-auto;
+}
+
+/* Clean spacing utilities */
+.space-y-minimal > * + * {
+  margin-top: 1rem;
+}
+
+.space-y-section > * + * {
+  margin-top: 3rem;
+}
+
+/* Responsive text sizing */
+.text-responsive-xl {
+  @apply text-2xl sm:text-3xl lg:text-4xl;
+}
+
+.text-responsive-lg {
+  @apply text-xl sm:text-2xl lg:text-3xl;
+}
+
+/* Clean link styles */
+.link-minimal {
+  @apply text-muted-foreground hover:text-foreground transition-colors duration-200;
+}
+
+.link-underline {
+  @apply relative;
+}
+
+.link-underline::after {
+  content: "";
+  @apply absolute bottom-0 left-0 w-0 h-px bg-foreground transition-all duration-200;
+}
+
+.link-underline:hover::after {
+  @apply w-full;
 }

@@ -30,57 +30,60 @@ const requiredEnvVars = [
 
 const missingEnvVars = requiredEnvVars.filter((envVar) => !process.env[envVar])
 
-if (missingEnvVars.length > 0) {
-  console.error(`Missing required Firebase environment variables: ${missingEnvVars.join(", ")}`)
-}
-
-// Initialize Firebase app
-let app: FirebaseApp
-let db: Firestore
+// Initialize Firebase app and services
+let app: FirebaseApp | null = null
+let db: Firestore | null = null
 let analytics: Analytics | null = null
 
 // Only initialize if we're in the browser and have the required config
 if (typeof window !== "undefined") {
   try {
-    // Check if Firebase is already initialized
-    if (getApps().length === 0) {
-      app = initializeApp(firebaseConfig)
+    // Check if we have all required environment variables
+    if (missingEnvVars.length === 0) {
+      // Check if Firebase is already initialized
+      if (getApps().length === 0) {
+        app = initializeApp(firebaseConfig)
+      } else {
+        app = getApps()[0]
+      }
+
+      // Initialize Firestore only if app is successfully initialized
+      if (app) {
+        try {
+          db = getFirestore(app)
+        } catch (firestoreError) {
+          console.warn("Firestore initialization failed:", firestoreError)
+          db = null
+        }
+
+        // Initialize Analytics (only if supported and measurementId is provided)
+        if (process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID) {
+          isSupported()
+            .then((supported) => {
+              if (supported && app) {
+                try {
+                  analytics = getAnalytics(app)
+                } catch (analyticsError) {
+                  console.warn("Analytics initialization failed:", analyticsError)
+                }
+              }
+            })
+            .catch(() => {
+              // Handle error silently
+            })
+        }
+      }
     } else {
-      app = getApps()[0]
-    }
-
-    // Initialize Firestore with better error handling
-    db = getFirestore(app)
-
-    // Enable network persistence (helps with connection issues)
-    if (typeof window !== "undefined") {
-      // Enable offline persistence
-      import("firebase/firestore")
-        .then(({ enableNetwork, disableNetwork }) => {
-          // This helps with connection stability
-        })
-        .catch((error) => {
-          // Handle error silently
-        })
-    }
-
-    // Initialize Analytics (only if supported and measurementId is provided)
-    if (process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID) {
-      isSupported()
-        .then((supported) => {
-          if (supported) {
-            analytics = getAnalytics(app)
-          }
-        })
-        .catch(() => {
-          // Handle error silently
-        })
+      console.warn(`Missing Firebase environment variables: ${missingEnvVars.join(", ")}`)
     }
   } catch (error) {
-    console.error("Firebase initialization error:", error)
+    console.warn("Firebase initialization error:", error)
+    app = null
+    db = null
+    analytics = null
   }
 }
 
-// Export the initialized services
+// Export the initialized services with null checks
 export { db, analytics }
 export default app

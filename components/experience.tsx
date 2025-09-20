@@ -1,7 +1,6 @@
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Calendar, MapPin } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
@@ -28,12 +27,21 @@ export function Experience() {
 
   const experiences = [
     {
+      title: "Backend Engineer Intern",
+      company: "MUST Fintech",
+      location: "Remote, Seoul",
+      duration: "Aug 2025 - Ongoing",
+      description:
+        "Developed backend features for a B2B SaaS productivity platform using Express, TypeScript, Sequelize, and PostgreSQL, improving system stability and reducing feature delivery time by 30%. Built comprehensive testing framework using Jest (ts-jest), expanding automated test coverage to 60%.",
+      technologies: ["Express.js", "TypeScript", "Sequelize", "PostgreSQL", "Jest", "OAuth", "React", "Flutter"],
+    },
+    {
       title: "Backend Developer Intern",
-      company: "DeepThought",
+      company: "DeepThought Edutech Ventures",
       location: "Remote, India",
       duration: "Sep 2024 - Dec 2024",
       description:
-        "Led cross-functional collaboration between 3+ teams, enhancing product satisfaction for 500+ students. Engineered backend architecture and APIs for an EdTech SaaS application, reducing client onboarding time by 15% and boosting satisfaction ratings by 12%.",
+        "Led cross-functional collaboration across 3+ teams to integrate NodeBB and Smarty templating, enhancing product satisfaction for 500+ students. Automated student personality form workflow, processing 30,000+ entries using CSV, HTML, CSS, jQuery, and Node.js.",
       technologies: ["Node.js", "Express.js", "MongoDB", "NodeBB", "Smarty", "jQuery", "CSV Processing"],
     },
     {
@@ -48,58 +56,54 @@ export function Experience() {
   ]
 
   return (
-    <section ref={ref} id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
+    <section ref={ref} id="experience" className="section-padding">
       <div className="max-w-4xl mx-auto">
-        <h2
-          className={`text-3xl font-bold text-center mb-12 transition-all duration-1000 ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-          }`}
-        >
-          Experience
-        </h2>
-        <div className="space-y-6">
+        <div className="text-center mb-12">
+          <h2
+            className={`text-responsive-lg font-bold mb-4 transition-all duration-700 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
+          >
+            Experience
+          </h2>
+          <div className="divider" />
+        </div>
+
+        <div className="space-y-8">
           {experiences.map((exp, index) => (
             <Card
               key={index}
-              className={`hover:shadow-lg transition-all duration-500 hover:scale-[1.02] group ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              className={`card-minimal hover-scale transition-all duration-700 ${
+                isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
-              <CardHeader className="relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors duration-200">
-                      {exp.title}
-                    </CardTitle>
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Calendar className="mr-1 h-4 w-4" />
-                      {exp.duration}
+              <CardHeader>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div>
+                    <CardTitle className="text-xl mb-2">{exp.title}</CardTitle>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-muted-foreground">
+                      <span className="font-medium">{exp.company}</span>
+                      <span className="hidden sm:inline">•</span>
+                      <div className="flex items-center gap-1">
+                        <MapPin className="h-4 w-4" />
+                        {exp.location}
+                      </div>
                     </div>
                   </div>
-                  <div className="flex items-center text-muted-foreground">
-                    <span className="font-semibold">{exp.company}</span>
-                    <span className="mx-2">•</span>
-                    <div className="flex items-center">
-                      <MapPin className="mr-1 h-4 w-4" />
-                      {exp.location}
-                    </div>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Calendar className="h-4 w-4" />
+                    {exp.duration}
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="relative z-10">
-                <p className="text-muted-foreground mb-4 leading-relaxed">{exp.description}</p>
+              <CardContent className="space-y-4">
+                <p className="text-muted-foreground leading-relaxed">{exp.description}</p>
                 <div className="flex flex-wrap gap-2">
-                  {exp.technologies.map((tech, techIndex) => (
-                    <Badge
-                      key={tech}
-                      variant="secondary"
-                      className="hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
-                      style={{ animationDelay: `${techIndex * 100}ms` }}
-                    >
+                  {exp.technologies.map((tech) => (
+                    <span key={tech} className="badge-minimal">
                       {tech}
-                    </Badge>
+                    </span>
                   ))}
                 </div>
               </CardContent>

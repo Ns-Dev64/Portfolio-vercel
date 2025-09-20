@@ -21,7 +21,6 @@ export function Header() {
   }, [])
 
   const navItems = [
-    { href: "#about", label: "About" },
     { href: "#experience", label: "Experience" },
     { href: "#projects", label: "Projects" },
     { href: "#skills", label: "Skills" },
@@ -48,17 +47,13 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? "bg-background/80 backdrop-blur-md border-b shadow-lg" : "bg-transparent"
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border/50" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link
-            href="#"
-            className="text-xl font-bold hover:text-foreground transition-colors duration-200"
-            onClick={(e) => handleNavClick(e, "#")}
-          >
+          <Link href="#" className="text-lg font-semibold link-minimal" onClick={(e) => handleNavClick(e, "#")}>
             Navaneet Singh
           </Link>
 
@@ -69,10 +64,9 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="text-sm font-medium hover:text-foreground transition-all duration-200 relative group"
+                className="text-sm font-medium link-minimal link-underline"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-foreground transition-all duration-200 group-hover:w-full"></span>
               </Link>
             ))}
             <ThemeToggle />
@@ -81,12 +75,7 @@ export function Header() {
           {/* Mobile Menu Button and Theme Toggle */}
           <div className="flex items-center md:hidden space-x-2">
             <ThemeToggle />
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hover:scale-110 transition-transform duration-200"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
+            <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
@@ -94,15 +83,14 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden animate-in slide-in-from-top-2 duration-200">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-b shadow-lg rounded-b-lg">
-              {navItems.map((item, index) => (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-md border-b border-border/50">
+              {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="block px-3 py-2 text-sm font-medium hover:text-foreground hover:bg-foreground/5 rounded-md transition-all duration-200"
-                  style={{ animationDelay: `${index * 50}ms` }}
+                  className="block px-3 py-2 text-sm font-medium link-minimal rounded-md hover:bg-muted"
                 >
                   {item.label}
                 </Link>
