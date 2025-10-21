@@ -46,14 +46,14 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border/50" : "bg-transparent"
+      className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
+        isScrolled ? "bg-background/95 backdrop-blur-sm" : "bg-background"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="#" className="text-lg font-semibold link-minimal" onClick={(e) => handleNavClick(e, "#")}>
-            Navaneet Singh
+          <Link href="#" className="text-base font-bold uppercase tracking-tight">
+            NS.DEV
           </Link>
 
           {/* Desktop Navigation */}
@@ -63,7 +63,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="text-sm font-medium link-minimal link-underline"
+                className="text-xs uppercase tracking-wide link-robotic font-medium"
               >
                 {item.label}
               </Link>
@@ -71,7 +71,7 @@ export function Header() {
             <ThemeToggle />
           </nav>
 
-          {/* Mobile Menu Button and Theme Toggle */}
+          {/* Mobile Controls */}
           <div className="flex items-center md:hidden space-x-2">
             <ThemeToggle />
             <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -82,14 +82,14 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-md border-b border-border/50">
+          <div className="md:hidden border-t">
+            <div className="px-2 pt-4 pb-3 space-y-2">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="block px-3 py-2 text-sm font-medium link-minimal rounded-md hover:bg-muted"
+                  className="block px-4 py-2 text-xs uppercase tracking-wide link-robotic font-medium border hover:bg-muted"
                 >
                   {item.label}
                 </Link>

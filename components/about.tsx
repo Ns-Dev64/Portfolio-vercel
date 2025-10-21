@@ -62,25 +62,25 @@ export function About() {
               <div className="space-y-4">
                 <div className="bg-gradient-to-br from-primary/5 to-primary/10 p-6 rounded-lg">
                   <h4 className="font-semibold mb-4 text-primary">Development Focus</h4>
-                  <ul className="space-y-3 text-muted-foreground">
-                    <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
-                      <span>🚀</span>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-3 text-sm hover:text-foreground transition-colors duration-200">
+                      <span className="w-2 h-2 bg-foreground flex-shrink-0"></span>
                       <span>Backend Architecture & APIs</span>
                     </li>
-                    <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
-                      <span>⚡</span>
+                    <li className="flex items-center gap-3 text-sm hover:text-foreground transition-colors duration-200">
+                      <span className="w-2 h-2 bg-foreground flex-shrink-0"></span>
                       <span>Performance Optimization</span>
                     </li>
-                    <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
-                      <span>🗄️</span>
+                    <li className="flex items-center gap-3 text-sm hover:text-foreground transition-colors duration-200">
+                      <span className="w-2 h-2 bg-foreground flex-shrink-0"></span>
                       <span>Database Design & Optimization</span>
                     </li>
-                    <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
-                      <span>🎨</span>
+                    <li className="flex items-center gap-3 text-sm hover:text-foreground transition-colors duration-200">
+                      <span className="w-2 h-2 bg-foreground flex-shrink-0"></span>
                       <span>Frontend Development (React/Next.js)</span>
                     </li>
-                    <li className="flex items-center space-x-2 hover:text-primary transition-colors duration-200">
-                      <span>☁️</span>
+                    <li className="flex items-center gap-3 text-sm hover:text-foreground transition-colors duration-200">
+                      <span className="w-2 h-2 bg-foreground flex-shrink-0"></span>
                       <span>Cloud Infrastructure & DevOps</span>
                     </li>
                   </ul>

@@ -1,6 +1,5 @@
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Calendar, MapPin } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
@@ -56,58 +55,47 @@ export function Experience() {
   ]
 
   return (
-    <section ref={ref} id="experience" className="section-padding">
+    <section ref={ref} id="experience" className="section-robotic bg-muted/10">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h2
-            className={`text-responsive-lg font-bold mb-4 transition-all duration-700 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-            }`}
-          >
-            Experience
-          </h2>
-          <div className="divider" />
-        </div>
+        <h2 className="title-robotic text-responsive-lg mb-12">Experience</h2>
 
-        <div className="space-y-8">
+        <div className="space-y-6">
           {experiences.map((exp, index) => (
-            <Card
+            <div
               key={index}
-              className={`card-minimal hover-scale transition-all duration-700 ${
+              className={`card-robotic p-8 transition-all duration-700 ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <div>
-                    <CardTitle className="text-xl mb-2">{exp.title}</CardTitle>
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-muted-foreground">
-                      <span className="font-medium">{exp.company}</span>
-                      <span className="hidden sm:inline">•</span>
-                      <div className="flex items-center gap-1">
-                        <MapPin className="h-4 w-4" />
-                        {exp.location}
-                      </div>
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
+                <div>
+                  <h3 className="text-lg font-bold mb-2">{exp.title}</h3>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-muted-foreground text-sm">
+                    <span className="font-medium">{exp.company}</span>
+                    <span className="hidden sm:inline">•</span>
+                    <div className="flex items-center gap-1">
+                      <MapPin className="h-3 w-3" />
+                      {exp.location}
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Calendar className="h-4 w-4" />
-                    {exp.duration}
-                  </div>
                 </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground leading-relaxed">{exp.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {exp.technologies.map((tech) => (
-                    <span key={tech} className="badge-minimal">
-                      {tech}
-                    </span>
-                  ))}
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Calendar className="h-3 w-3" />
+                  {exp.duration}
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+
+              <p className="text-muted-foreground mb-6 leading-relaxed text-sm">{exp.description}</p>
+
+              <div className="flex flex-wrap gap-2">
+                {exp.technologies.map((tech) => (
+                  <span key={tech} className="badge-robotic">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

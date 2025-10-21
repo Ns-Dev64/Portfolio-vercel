@@ -149,7 +149,7 @@ export function Projects() {
               {featuredProjects.map((project, index) => (
                 <Card
                   key={index}
-                  className={`card-minimal hover-scale h-full transition-all duration-700 ${
+                  className={`card-robotic hover-scale h-full transition-all duration-700 ${
                     isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                   }`}
                   style={{ transitionDelay: `${(index + 1) * 200}ms` }}
@@ -193,9 +193,12 @@ export function Projects() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (
-                        <span key={tech} className="badge-minimal text-xs">
+                        <span
+                          key={tech}
+                          className="inline-block px-3 py-1.5 text-xs font-medium border border-foreground/20 rounded-none bg-muted text-foreground hover:border-foreground/40 transition-all duration-200"
+                        >
                           {tech}
                         </span>
                       ))}
@@ -245,9 +248,12 @@ export function Projects() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (
-                        <span key={tech} className="badge-minimal text-xs">
+                        <span
+                          key={tech}
+                          className="inline-block px-3 py-1.5 text-xs font-medium border border-foreground/20 rounded-none bg-muted text-foreground hover:border-foreground/40 transition-all duration-200"
+                        >
                           {tech}
                         </span>
                       ))}

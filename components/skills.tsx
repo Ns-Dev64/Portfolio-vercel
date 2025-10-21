@@ -1,6 +1,4 @@
 "use client"
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useEffect, useRef, useState } from "react"
 
 export function Skills() {
@@ -60,41 +58,31 @@ export function Skills() {
   ]
 
   return (
-    <section ref={ref} id="skills" className="section-padding">
+    <section ref={ref} id="skills" className="section-robotic">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2
-            className={`text-responsive-lg font-bold mb-4 transition-all duration-700 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-            }`}
-          >
-            Skills & Technologies
-          </h2>
-          <div className="divider" />
-        </div>
+        <h2 className="title-robotic text-responsive-lg mb-12">Skills & Technologies</h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {skillCategories.map((category, index) => (
-            <Card
+            <div
               key={index}
-              className={`card-minimal hover-scale transition-all duration-700 ${
+              className={`card-robotic p-8 transition-all duration-700 ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg">{category.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span key={skill} className="badge-minimal text-xs">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-6 text-foreground border-b border-border pb-4">
+                {category.title}
+              </h3>
+              <div className="space-y-3">
+                {category.skills.map((skill) => (
+                  <div key={skill} className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 bg-foreground flex-shrink-0"></span>
+                    <span className="text-sm text-muted-foreground font-medium">{skill}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>
