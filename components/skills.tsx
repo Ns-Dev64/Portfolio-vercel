@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
+import type React from "react"
 
 export function Skills() {
   const [isVisible, setIsVisible] = useState(false)
@@ -66,19 +67,30 @@ export function Skills() {
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className={`card-robotic p-8 transition-all duration-700 ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+              className={`card-robotic p-8 transition-all duration-700 stagger-item hover-lift ${
+                isVisible ? "in-view" : ""
               }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={
+                {
+                  animationDelay: `${index * 100}ms`,
+                  "--index": index,
+                } as React.CSSProperties
+              }
             >
-              <h3 className="text-sm font-bold uppercase tracking-widest mb-6 text-foreground border-b border-border pb-4">
+              <h3 className="text-xs font-bold uppercase tracking-widest mb-4 text-foreground border-b border-border pb-3">
                 {category.title}
               </h3>
               <div className="space-y-3">
-                {category.skills.map((skill) => (
-                  <div key={skill} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-foreground flex-shrink-0"></span>
-                    <span className="text-sm text-muted-foreground font-medium">{skill}</span>
+                {category.skills.map((skill, skillIndex) => (
+                  <div
+                    key={skill}
+                    className="flex items-center gap-2 group"
+                    style={{ animationDelay: `${index * 100 + skillIndex * 50}ms` }}
+                  >
+                    <span className="w-1.5 h-1.5 bg-foreground flex-shrink-0 transition-all duration-300 group-hover:scale-150"></span>
+                    <span className="text-sm text-muted-foreground font-medium transition-colors duration-300 group-hover:text-foreground">
+                      {skill}
+                    </span>
                   </div>
                 ))}
               </div>

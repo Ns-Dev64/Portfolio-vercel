@@ -27,7 +27,7 @@ This guide will help you set up Firebase for your portfolio contact form.
 5. Copy the configuration object
 
 Your config will look like this:
-\`\`\`javascript
+```javascript
 const firebaseConfig = {
   apiKey: "AIzaSyExample...",
   authDomain: "your-project.firebaseapp.com",
@@ -37,14 +37,14 @@ const firebaseConfig = {
   appId: "1:123456789:web:abcdef",
   measurementId: "G-XXXXXXXXXX" // Only if Analytics is enabled
 };
-\`\`\`
+```
 
 ## 4. Configure Environment Variables
 
 1. Copy `.env.example` to `.env.local`
 2. Replace the placeholder values with your Firebase config:
 
-\`\`\`env
+```env
 NEXT_PUBLIC_FIREBASE_API_KEY=your-actual-api-key
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
 NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
@@ -54,7 +54,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=1:123456789:web:abcdef
 
 # Optional: Only add if you enabled Analytics
 NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=G-XXXXXXXXXX
-\`\`\`
+```
 
 **Note:** 
 - `databaseURL` is NOT needed for Firestore (only for Realtime Database)
@@ -62,9 +62,9 @@ NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=G-XXXXXXXXXX
 
 ## 5. Install Firebase SDK
 
-\`\`\`bash
+```bash
 npm install firebase
-\`\`\`
+```
 
 ## 6. Test the Integration
 
@@ -78,7 +78,7 @@ npm install firebase
 
 Update your Firestore security rules for production:
 
-\`\`\`javascript
+```javascript
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -89,7 +89,7 @@ service cloud.firestore {
     }
   }
 }
-\`\`\`
+```
 
 ## 8. Viewing Submissions
 

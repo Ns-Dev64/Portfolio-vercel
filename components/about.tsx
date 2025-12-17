@@ -44,40 +44,40 @@ export function About() {
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold mb-4">My Journey</h3>
                 <p className="text-muted-foreground mb-4 leading-relaxed">
-                  I'm a fullstack developer with a strong passion for backend development. My journey began with
-                  learning the fundamentals of web development, but I quickly gravitated towards server-side
-                  architecture, API design, and database optimization.
+                  Backend Engineer at MUST Fintech with a proven track record of building scalable AI-powered systems. I
+                  specialize in FastAPI, Node.js, and cloud architectures, with expertise in real-time transcription,
+                  multi-company platforms, and LLM integration.
                 </p>
                 <p className="text-muted-foreground mb-4 leading-relaxed">
-                  While I'm comfortable with frontend technologies like React and Next.js, my true expertise lies in
-                  building robust backend systems. Through internships at Techplement and DeepThought, I've specialized
-                  in Node.js, Express.js, and performance optimization, achieving significant improvements in system
-                  efficiency and user experience.
+                  My recent work includes architecting an AI-powered transcription platform that increased client
+                  retention by 25%, developing super admin portals that reduced management overhead by 40%, and
+                  implementing comprehensive testing frameworks that cut bug reports by 30%.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  I love solving complex backend challenges, from designing scalable APIs to optimizing database queries
-                  and implementing efficient caching strategies.
+                  I'm passionate about building systems that scale, optimizing performance, and leveraging AI to solve
+                  real-world business problems. From Seoul to Hospet, I've collaborated with cross-functional teams to
+                  deliver impactful solutions.
                 </p>
               </div>
               <div className="space-y-4">
                 <div className="bg-gradient-to-br from-primary/5 to-primary/10 p-6 rounded-lg">
-                  <h4 className="font-semibold mb-4 text-primary">Development Focus</h4>
+                  <h4 className="font-semibold mb-4 text-primary">Areas of Expertise</h4>
                   <ul className="space-y-3">
                     <li className="flex items-center gap-3 text-sm hover:text-foreground transition-colors duration-200">
                       <span className="w-2 h-2 bg-foreground flex-shrink-0"></span>
-                      <span>Backend Architecture & APIs</span>
+                      <span>AI-Powered Backend Systems</span>
                     </li>
                     <li className="flex items-center gap-3 text-sm hover:text-foreground transition-colors duration-200">
                       <span className="w-2 h-2 bg-foreground flex-shrink-0"></span>
-                      <span>Performance Optimization</span>
+                      <span>Real-Time Transcription & Translation</span>
                     </li>
                     <li className="flex items-center gap-3 text-sm hover:text-foreground transition-colors duration-200">
                       <span className="w-2 h-2 bg-foreground flex-shrink-0"></span>
-                      <span>Database Design & Optimization</span>
+                      <span>Multi-Company Architecture</span>
                     </li>
                     <li className="flex items-center gap-3 text-sm hover:text-foreground transition-colors duration-200">
                       <span className="w-2 h-2 bg-foreground flex-shrink-0"></span>
-                      <span>Frontend Development (React/Next.js)</span>
+                      <span>RESTful API & Microservices</span>
                     </li>
                     <li className="flex items-center gap-3 text-sm hover:text-foreground transition-colors duration-200">
                       <span className="w-2 h-2 bg-foreground flex-shrink-0"></span>

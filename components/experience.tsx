@@ -26,31 +26,31 @@ export function Experience() {
 
   const experiences = [
     {
+      title: "Backend Engineer",
+      company: "MUST Fintech",
+      location: "Remote, Seoul, South Korea",
+      duration: "Nov 2025 - Present",
+      description:
+        "Enhanced AI-powered B2B/B2C transcription and translation platform using FastAPI, DynamoDB, and boto3, implementing Scribe v2 real-time transcription that improved user experience and enabled seamless client demonstrations, increasing client retention by 25%. Architected and led development of super admin management portal with full CRUD operations for rooms, users, and multi-company hierarchies, streamlining administrative workflows and reducing management overhead by 40%.",
+      technologies: ["FastAPI", "DynamoDB", "boto3", "ElevenLabs", "Gemini 2.5 Pro", "WebSocket"],
+    },
+    {
       title: "Backend Engineer Intern",
       company: "MUST Fintech",
-      location: "Remote, Seoul",
-      duration: "Aug 2025 - Ongoing",
+      location: "Remote, Seoul, South Korea",
+      duration: "Aug 2025 - Nov 2025",
       description:
-        "Developed backend features for a B2B SaaS productivity platform using Express, TypeScript, Sequelize, and PostgreSQL, improving system stability and reducing feature delivery time by 30%. Built comprehensive testing framework using Jest (ts-jest), expanding automated test coverage to 60%.",
-      technologies: ["Express.js", "TypeScript", "Sequelize", "PostgreSQL", "Jest", "OAuth"],
+        "Developed backend features for a B2B SaaS employee productivity platform using Express, TypeScript, Sequelize, and PostgreSQL, implementing data aggregation dashboards that increased employee productivity insights and operational transparency by 35%. Built comprehensive testing framework with Jest (ts-jest), achieving 60% automated test coverage and reducing bug reports by 30% across backend services.",
+      technologies: ["Express.js", "TypeScript", "Sequelize", "PostgreSQL", "Jest", "ts-jest"],
     },
     {
       title: "Backend Developer Intern",
-      company: "DeepThought Edutech Ventures",
+      company: "DeepThought Edutech Ventures Private Limited",
       location: "Remote, India",
       duration: "Sep 2024 - Dec 2024",
       description:
-        "Led cross-functional collaboration across 3+ teams to integrate NodeBB and Smarty templating, enhancing product satisfaction for 500+ students. Automated student personality form workflow, processing 30,000+ entries using CSV, HTML, CSS, jQuery, and Node.js.",
-      technologies: ["Node.js", "Express.js", "MongoDB", "NodeBB", "Smarty", "jQuery", "CSV Processing"],
-    },
-    {
-      title: "Full Stack Developer Intern",
-      company: "Techplement",
-      location: "Remote, India",
-      duration: "Aug 2024 - Sep 2024",
-      description:
-        "Led development of a comprehensive MERN stack web application with 50+ positive feedback responses. Orchestrated transition to generic API calls, reducing frontend memory consumption by 35% and network resource utilization by 20%.",
-      technologies: ["MongoDB", "Express.js", "React.js", "Node.js", "Ngrok", "Postman", "CORS"],
+        "Led cross-functional collaboration across 3+ teams to integrate NodeBB forum platform and Smarty templating engine, enhancing product satisfaction for 500+ students and reducing implementation timeline by 20%. Automated student personality assessment workflow processing 30,000+ entries using CSV parsing, HTML forms, jQuery validation, and Node.js backend, reducing manual data processing time from 40 hours to under 2 hours per batch.",
+      technologies: ["Node.js", "Express.js", "NodeBB", "Smarty", "jQuery", "CSV Processing", "RESTful API"],
     },
   ]
 

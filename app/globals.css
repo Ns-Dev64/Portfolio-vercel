@@ -76,11 +76,11 @@
   @apply bg-foreground/20 hover:bg-foreground/40 transition-colors;
 }
 
-/* Animations */
+/* Smooth animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -88,8 +88,122 @@
   }
 }
 
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes subtle-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 .animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-fill-mode: forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+  animation-fill-mode: forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+  animation-fill-mode: forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-fill-mode: forwards;
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Stagger animations */
+.stagger-item {
+  opacity: 0;
+}
+
+.stagger-item.in-view {
+  animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.stagger-item:nth-child(1) {
+  animation-delay: 0s;
+}
+.stagger-item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.stagger-item:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.stagger-item:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.stagger-item:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.stagger-item:nth-child(n + 6) {
+  animation-delay: calc((var(--index, 5)) * 0.1s);
 }
 
 /* Focus styles */
@@ -102,24 +216,48 @@ textarea:focus-visible {
 
 /* Card styles */
 .card-robotic {
-  @apply bg-card border border-border rounded-none transition-all duration-200;
+  @apply bg-card border border-border rounded-none transition-all duration-300;
 }
 
 .card-robotic:hover {
   @apply border-foreground shadow-md;
+  transform: translateY(-2px);
 }
 
 /* Button styles */
 .btn-robotic {
   @apply inline-flex items-center justify-center px-6 py-3 border-2 border-foreground rounded-none;
   @apply font-semibold text-sm uppercase tracking-wide;
-  @apply transition-all duration-150;
   @apply focus-visible:outline-2 focus-visible:outline-offset-2;
+  position: relative;
+  overflow: hidden;
+  transition: all 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-robotic::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  transition: left 0.3s ease;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+.btn-robotic:hover::before {
+  left: 100%;
 }
 
 .btn-robotic-primary {
   @apply bg-foreground text-background border-foreground;
-  @apply hover:bg-background hover:text-foreground;
+  @apply hover:shadow-lg;
+}
+
+.btn-robotic-primary:hover {
+  transform: translateY(-2px);
 }
 
 .btn-robotic-secondary {
@@ -127,11 +265,16 @@ textarea:focus-visible {
   @apply hover:bg-foreground hover:text-background;
 }
 
+.btn-robotic-secondary:hover {
+  transform: translateY(-2px);
+}
+
 /* Badge */
 .badge-robotic {
   @apply inline-flex items-center px-3 py-1 border border-foreground/20 rounded-none;
   @apply text-xs font-medium uppercase tracking-wide;
-  @apply bg-muted text-foreground;
+  @apply bg-muted text-foreground transition-all duration-300;
+  @apply hover:border-foreground/60 hover:bg-foreground hover:text-background;
 }
 
 /* Divider */
@@ -160,16 +303,15 @@ textarea:focus-visible {
 .title-robotic {
   @apply text-4xl font-bold uppercase;
   letter-spacing: -1px;
+  position: relative;
+  display: inline-block;
 }
 
 .title-robotic::after {
   content: "";
   @apply absolute bottom-0 left-0 w-12 h-0.5 bg-foreground mt-2;
-}
-
-.title-robotic {
-  position: relative;
-  display: inline-block;
+  animation: slideInLeft 0.6s ease-out 0.3s forwards;
+  transform-origin: left;
 }
 
 /* Link styles */
@@ -191,7 +333,7 @@ textarea:focus-visible {
   @apply bg-input border border-border rounded-none px-4 py-2;
   @apply text-foreground placeholder-muted-foreground;
   @apply transition-all duration-200;
-  @apply focus:outline-none focus:border-foreground;
+  @apply focus:outline-none focus:border-foreground focus:shadow-md;
 }
 
 /* Responsive text */
@@ -201,4 +343,43 @@ textarea:focus-visible {
 
 .text-responsive-lg {
   @apply text-xl sm:text-2xl lg:text-3xl;
+}
+
+/* Smooth transition for all interactive elements */
+* {
+  @apply transition-colors duration-200;
+}
+
+button,
+a,
+input,
+textarea {
+  transition: all 200ms ease-out;
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  @apply transition-all duration-300 hover:shadow-md;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-scale {
+  @apply transition-all duration-300;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* Dark mode specific animations */
+.dark .card-robotic:hover {
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+}
+
+/* Intersection observer helper */
+.in-view {
+  animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }

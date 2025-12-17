@@ -112,6 +112,25 @@ export function Projects() {
       featured: false,
       isPrivate: false,
     },
+    {
+      title: "Auto Docs",
+      description:
+        "Building automated documentation generator with GitHub webhook integration that eliminates manual doc maintenance by auto-generating Markdown files matching project structure. Implemented event-driven pipeline using BullMQ and Octokit that triggers documentation generation on every push and automatically commits updates to designated folders. Designed modular architecture for future expansion into code quality tooling, including automated analysis of test coverage, code complexity, and style compliance.",
+      technologies: [
+        "Bun.js",
+        "Next.js",
+        "Elysia.js",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL",
+        "Redis",
+        "BullMQ",
+        "Octokit",
+      ],
+      github: "https://github.com/Ns-Dev64/auto-docs",
+      featured: true,
+      isPrivate: false,
+    },
   ]
 
   const featuredProjects = projects.filter((p) => p.featured)
