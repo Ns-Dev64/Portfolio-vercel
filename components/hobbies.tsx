@@ -1,6 +1,4 @@
 "use client"
-
-import { Card, CardContent } from "@/components/ui/card"
 import { Music, Gamepad2, Book } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
@@ -45,34 +43,34 @@ export function Hobbies() {
   ]
 
   return (
-    <section ref={ref} id="hobbies" className="section-padding bg-muted/30">
+    <section ref={ref} id="hobbies" className="section-robotic bg-muted/10">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2
-            className={`text-responsive-lg font-bold mb-4 transition-all duration-700 ${
+            className={`title-robotic text-responsive-lg mb-4 transition-all duration-700 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
           >
             Hobbies & Interests
           </h2>
-          <div className="divider" />
+          <div className="divider-robotic" />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {hobbies.map((hobby, index) => (
-            <Card
+            <div
               key={index}
-              className={`card-minimal hover-scale text-center transition-all duration-700 ${
+              className={`card-robotic p-8 text-center hover-lift transition-all duration-700 ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
-              style={{ transitionDelay: `${index * 200}ms` }}
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <CardContent className="p-8">
-                <hobby.icon className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                <h3 className="text-lg font-semibold mb-3">{hobby.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{hobby.description}</p>
-              </CardContent>
-            </Card>
+              <div className="mb-6 inline-block transition-all duration-300 hover:scale-125 hover:rotate-6">
+                <hobby.icon className="h-12 w-12 text-foreground" strokeWidth={1.5} />
+              </div>
+              <h3 className="text-base font-bold uppercase tracking-wide mb-3">{hobby.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{hobby.description}</p>
+            </div>
           ))}
         </div>
       </div>

@@ -76,11 +76,22 @@
   @apply bg-foreground/20 hover:bg-foreground/40 transition-colors;
 }
 
-/* Smooth animations */
+/* Enhanced animation keyframes for more dynamic effects */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
   }
   to {
     opacity: 1;
@@ -91,7 +102,7 @@
 @keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-50px);
   }
   to {
     opacity: 1;
@@ -102,7 +113,7 @@
 @keyframes slideInRight {
   from {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translateX(50px);
   }
   to {
     opacity: 1;
@@ -113,11 +124,22 @@
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.85);
   }
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
   }
 }
 
@@ -130,13 +152,23 @@
   }
 }
 
-@keyframes subtle-pulse {
+@keyframes pulse-glow {
   0%,
   100% {
-    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
   }
   50% {
-    opacity: 0.95;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@keyframes pulse-glow-dark {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.3);
   }
 }
 
@@ -146,64 +178,108 @@
     transform: translateY(0px);
   }
   50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
     transform: translateY(-8px);
   }
 }
 
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+/* Animation classes with improved timing and visibility for light mode */
 .animate-fade-in-up {
-  animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: fadeInUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-fill-mode: forwards;
+  opacity: 0;
 }
 
 .animate-slide-in-left {
-  animation: slideInLeft 0.6s ease-out;
+  animation: slideInLeft 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-fill-mode: forwards;
+  opacity: 0;
 }
 
 .animate-slide-in-right {
-  animation: slideInRight 0.6s ease-out;
+  animation: slideInRight 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-fill-mode: forwards;
+  opacity: 0;
 }
 
 .animate-scale-in {
-  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: scaleIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation-fill-mode: forwards;
+  opacity: 0;
 }
 
-.animate-subtle-pulse {
-  animation: subtle-pulse 3s ease-in-out infinite;
+.animate-rotate-in {
+  animation: rotateIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-fill-mode: forwards;
+  opacity: 0;
 }
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Stagger animations */
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.dark .animate-pulse-glow {
+  animation: pulse-glow-dark 2s ease-in-out infinite;
+}
+
+/* Stagger animations with improved visibility */
 .stagger-item {
   opacity: 0;
 }
 
 .stagger-item.in-view {
-  animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .stagger-item:nth-child(1) {
-  animation-delay: 0s;
-}
-.stagger-item:nth-child(2) {
   animation-delay: 0.1s;
 }
-.stagger-item:nth-child(3) {
+.stagger-item:nth-child(2) {
   animation-delay: 0.2s;
 }
-.stagger-item:nth-child(4) {
+.stagger-item:nth-child(3) {
   animation-delay: 0.3s;
 }
-.stagger-item:nth-child(5) {
+.stagger-item:nth-child(4) {
   animation-delay: 0.4s;
 }
+.stagger-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
 .stagger-item:nth-child(n + 6) {
-  animation-delay: calc((var(--index, 5)) * 0.1s);
+  animation-delay: calc((var(--index, 5)) * 0.1s + 0.1s);
 }
 
 /* Focus styles */
@@ -214,24 +290,29 @@ textarea:focus-visible {
   @apply outline-2 outline-offset-2 outline-foreground;
 }
 
-/* Card styles */
+/* Enhanced card hover effects with stronger shadows for light mode */
 .card-robotic {
   @apply bg-card border border-border rounded-none transition-all duration-300;
 }
 
 .card-robotic:hover {
-  @apply border-foreground shadow-md;
-  transform: translateY(-2px);
+  @apply border-foreground;
+  transform: translateY(-6px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
 }
 
-/* Button styles */
+.dark .card-robotic:hover {
+  box-shadow: 0 15px 50px rgba(255, 255, 255, 0.25);
+}
+
+/* Button styles with enhanced animations */
 .btn-robotic {
   @apply inline-flex items-center justify-center px-6 py-3 border-2 border-foreground rounded-none;
   @apply font-semibold text-sm uppercase tracking-wide;
   @apply focus-visible:outline-2 focus-visible:outline-offset-2;
   position: relative;
   overflow: hidden;
-  transition: all 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .btn-robotic::before {
@@ -242,9 +323,9 @@ textarea:focus-visible {
   width: 100%;
   height: 100%;
   background: currentColor;
-  transition: left 0.3s ease;
+  transition: left 0.4s ease;
   z-index: -1;
-  opacity: 0.1;
+  opacity: 0.15;
 }
 
 .btn-robotic:hover::before {
@@ -253,11 +334,15 @@ textarea:focus-visible {
 
 .btn-robotic-primary {
   @apply bg-foreground text-background border-foreground;
-  @apply hover:shadow-lg;
 }
 
 .btn-robotic-primary:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.dark .btn-robotic-primary:hover {
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
 }
 
 .btn-robotic-secondary {
@@ -266,15 +351,29 @@ textarea:focus-visible {
 }
 
 .btn-robotic-secondary:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Badge */
+.dark .btn-robotic-secondary:hover {
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.25);
+}
+
+/* Badge with enhanced hover */
 .badge-robotic {
   @apply inline-flex items-center px-3 py-1 border border-foreground/20 rounded-none;
   @apply text-xs font-medium uppercase tracking-wide;
   @apply bg-muted text-foreground transition-all duration-300;
-  @apply hover:border-foreground/60 hover:bg-foreground hover:text-background;
+}
+
+.badge-robotic:hover {
+  @apply border-foreground/80 bg-foreground text-background;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.dark .badge-robotic:hover {
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
 }
 
 /* Divider */
@@ -328,12 +427,21 @@ textarea:focus-visible {
   @apply w-full;
 }
 
-/* Input styles */
+/* Input styles with better focus effects */
 .input-robotic {
   @apply bg-input border border-border rounded-none px-4 py-2;
   @apply text-foreground placeholder-muted-foreground;
-  @apply transition-all duration-200;
-  @apply focus:outline-none focus:border-foreground focus:shadow-md;
+  @apply transition-all duration-300;
+}
+
+.input-robotic:focus {
+  @apply outline-none border-foreground;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  transform: scale(1.01);
+}
+
+.dark .input-robotic:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
 }
 
 /* Responsive text */
@@ -354,16 +462,21 @@ button,
 a,
 input,
 textarea {
-  transition: all 200ms ease-out;
+  transition: all 250ms ease-out;
 }
 
-/* Enhanced hover effects */
+/* Enhanced hover lift effect with stronger shadows and more movement for light mode */
 .hover-lift {
-  @apply transition-all duration-300 hover:shadow-md;
+  @apply transition-all duration-300;
 }
 
 .hover-lift:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.dark .hover-lift:hover {
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.25);
 }
 
 .hover-scale {
@@ -371,15 +484,48 @@ textarea {
 }
 
 .hover-scale:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.dark .hover-scale:hover {
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Add icon animations */
+.icon-bounce:hover {
+  animation: bounce-subtle 0.6s ease-in-out;
+}
+
+.icon-wiggle:hover {
+  animation: wiggle 0.5s ease-in-out;
 }
 
 /* Dark mode specific animations */
-.dark .card-robotic:hover {
-  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+.in-view {
+  animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-/* Intersection observer helper */
-.in-view {
-  animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+/* Section entrance animations */
+.section-entrance {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.section-entrance.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card animations on scroll */
+.card-entrance {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-entrance.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
