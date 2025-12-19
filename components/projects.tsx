@@ -33,7 +33,7 @@ export function Projects() {
     {
       title: "Real Estate Underwriter AI",
       description:
-        "Architected an AI-powered underwriting flow that ingests T12s, Rent Rolls, property data, and investor criteria, then delivers investment decisions with detailed metrics and reasoning, cutting underwriting time from hours to seconds.",
+        "AI-powered underwriting system that processes T12s, Rent Rolls, and property data to deliver instant investment decisions. Reduces underwriting time from hours to seconds with detailed metrics and reasoning.",
       technologies: [
         "Node.js",
         "Express.js",
@@ -54,7 +54,7 @@ export function Projects() {
     {
       title: "Notemind LLM",
       description:
-        "Designed and implemented an advanced RAG pipeline for multimodal knowledge management, enabling users to upload and query across PDFs, documents, CSVs, videos, and audios with outputs like summaries, podcasts, mindmaps, and flowcharts.",
+        "Advanced RAG pipeline for multimodal knowledge management supporting PDFs, videos, and audio. Generates summaries, podcasts, mindmaps, and flowcharts from uploaded content.",
       technologies: [
         "Next.js",
         "Bun.js",
@@ -77,7 +77,7 @@ export function Projects() {
     {
       title: "Marketplace Server",
       description:
-        "Built a high-performance Bun backend with custom clustering, cutting memory use by 40% and maximizing CPU efficiency. Integrated Redis and BullMQ for fault-tolerant background processing, improving job throughput by 35%.",
+        "High-performance Bun backend with custom clustering reducing memory by 40%. Integrated Redis and BullMQ for fault-tolerant processing, improving throughput by 35%.",
       technologies: [
         "Bun.js",
         "Hono.js",
@@ -97,7 +97,7 @@ export function Projects() {
     {
       title: "Platoon Plate (ALPR System)",
       description:
-        "Full-stack Automatic License Plate Recognition system designed for Indian Army checkposts using YOLOv8 for real-time detection. Built with MVC pattern and integrated AI model with web interface.",
+        "Full-stack Automatic License Plate Recognition system for Indian Army checkposts using YOLOv8. Real-time detection with MVC architecture integrating AI model and web interface.",
       technologies: ["Flask", "Python", "OpenCV", "JavaScript", "MySQL", "SQLAlchemy", "YOLOv8", "Ultralytics"],
       github: "https://github.com/chiku0989/flask_backend",
       featured: false,
@@ -106,7 +106,7 @@ export function Projects() {
     {
       title: "Deep Dossier",
       description:
-        "TypeScript-based note management app with bulk operations, real-time retrieval, and tag-based organization for structured technical content.",
+        "TypeScript note management app with bulk operations, real-time retrieval, and tag-based organization for structured technical content.",
       technologies: ["TypeScript", "Claude Sonnet 4", "MCP-SDK", "Zod", "Prisma", "SQLite"],
       github: "https://github.com/Ns-Dev64/Summarizer-MCP",
       featured: false,
@@ -115,7 +115,7 @@ export function Projects() {
     {
       title: "Auto Docs",
       description:
-        "Building automated documentation generator with GitHub webhook integration that eliminates manual doc maintenance by auto-generating Markdown files matching project structure. Implemented event-driven pipeline using BullMQ and Octokit that triggers documentation generation on every push and automatically commits updates to designated folders. Designed modular architecture for future expansion into code quality tooling, including automated analysis of test coverage, code complexity, and style compliance.",
+        "Automated documentation generator with GitHub webhook integration that auto-generates and commits Markdown files on every push. Event-driven pipeline using BullMQ and Octokit with modular architecture for future code quality tooling.",
       technologies: [
         "Bun.js",
         "Next.js",

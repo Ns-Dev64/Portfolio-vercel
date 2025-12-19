@@ -29,16 +29,12 @@ export function Skills() {
       skills: ["JavaScript (ES6+)", "TypeScript", "Python"],
     },
     {
-      title: "Frontend",
-      skills: ["React.js", "Next.js", "jQuery", "Tailwind CSS"],
-    },
-    {
       title: "Backend",
-      skills: ["Node.js", "Bun.js", "Express.js", "FastAPI", "Django", "Flask", "Elysia.js", "Hono.js"],
+      skills: ["Node.js", "Bun.js", "Express.js", "FastAPI", "Elysia.js", "Hono.js"],
     },
     {
       title: "Databases",
-      skills: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "Firebase", "SQLite", "PineconeDB"],
+      skills: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "PineconeDB"],
     },
     {
       title: "Architecture",
@@ -46,7 +42,7 @@ export function Skills() {
     },
     {
       title: "Testing & Tools",
-      skills: ["Jest", "Postman", "ThunderClient", "Git", "GitHub", "Prisma", "Sequelize", "Swagger"],
+      skills: ["Jest", "Postman", "Git", "GitHub", "Prisma", "Sequelize", "Swagger"],
     },
     {
       title: "Cloud & DevOps",

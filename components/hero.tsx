@@ -46,14 +46,13 @@ export function Hero() {
           {/* Divider */}
           <div className="divider-robotic" />
 
-          {/* Description */}
+          {/* Description - Shortened bio */}
           <p
             className="text-center text-base text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in-up"
             style={{ animationDelay: "0.3s" }}
           >
-            Building scalable AI-powered backend systems with FastAPI, Node.js, and modern cloud technologies.
-            Specialized in real-time transcription, multi-company architectures, and LLM integration with proven track
-            record of improving system efficiency and user engagement.
+            Specialized in building scalable AI-powered backend systems with FastAPI and Node.js, focusing on real-time
+            solutions and LLM integration.
           </p>
 
           {/* CTA Buttons */}
